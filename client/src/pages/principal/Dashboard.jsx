@@ -21,7 +21,7 @@ export default function Dashboard() {
   useEffect(() => {
 
     axios.get(
-      "http://localhost:5000/api/analytics/weekly-enhanced",
+      `${process.env.backendurl}/api/analytics/weekly-enhanced`,
       {
         headers: {
           Authorization:
@@ -32,7 +32,7 @@ export default function Dashboard() {
     ).then(res => setWeekly(res.data))
 
     axios.get(
-      "http://localhost:5000/api/analytics/weekly-ai",
+      `${process.env.backendurl}/api/analytics/weekly-ai`,
       {
         headers: {
           Authorization:
