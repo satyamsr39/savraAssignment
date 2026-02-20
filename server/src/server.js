@@ -8,7 +8,6 @@ const activityRoutes = require("./routes/activityRoutes")
 const analyticsRoutes = require("./routes/analyticsRoutes")
 
 const app = express()
-
 connectDB()
 
 app.use(cors())
