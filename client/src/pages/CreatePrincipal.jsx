@@ -19,7 +19,7 @@ const [secret, setSecret] =
     try {
 
       await axios.post(
-        `${process.env.backendurl}/api/auth/create-principal`,
+        `http://localhost:5000/api/auth/create-principal`,
        {
   name,
   email,

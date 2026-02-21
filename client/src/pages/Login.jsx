@@ -78,7 +78,7 @@ export default function Login() {
     setLoginError("")
     try {
       const res = await axios.post(
-        `${process.env.backendurl}/api/auth/login`,
+        `http://localhost:5000/api/auth/login`,
         { email, password }
       )
 
@@ -101,7 +101,7 @@ export default function Login() {
   const register = async () => {
     try {
       await axios.post(
-        `${process.env.backendurl}/api/auth/register`,
+        `http://localhost:5000/api/auth/register`,
         {
           name,
           email,

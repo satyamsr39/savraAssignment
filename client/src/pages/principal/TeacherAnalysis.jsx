@@ -33,7 +33,7 @@ export default function TeacherAnalysis() {
   const fetchTeachers = async () => {
     try {
       const res = await axios.get(
-        `${process.env.backendurl}/api/analytics/teachers`,
+        `http://localhost:5000/api/analytics/teachers`,
         {
           headers: {
             Authorization:
@@ -60,7 +60,7 @@ export default function TeacherAnalysis() {
 
     try {
       const res = await axios.get(
-  `${process.env.backendurl}/api/analytics/teacher-details/${id}`,
+  `http://localhost:5000/api/analytics/teacher-details/${id}`,
   {
     headers: {
       Authorization:
