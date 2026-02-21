@@ -33,7 +33,7 @@ export default function TeacherAnalysis() {
   const fetchTeachers = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/analytics/teachers`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/analytics/teachers`,
         {
           headers: {
             Authorization:
@@ -60,7 +60,7 @@ export default function TeacherAnalysis() {
 
     try {
       const res = await axios.get(
-  `http://localhost:5000/api/analytics/teacher-details/${id}`,
+  `${import.meta.env.VITE_BACKEND_URL}/api/analytics/teacher-details/${id}`,
   {
     headers: {
       Authorization:

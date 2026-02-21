@@ -78,10 +78,10 @@ export default function Login() {
     setLoginError("")
     try {
       const res = await axios.post(
-        `http://localhost:5000/api/auth/login`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/auth/login`,
         { email, password }
       )
-
+console.log(import.meta.env.VITE_BACKEND_URL)
       localStorage.setItem("token", res.data.token)
       localStorage.setItem("role", res.data.role)
 
@@ -101,7 +101,7 @@ export default function Login() {
   const register = async () => {
     try {
       await axios.post(
-        `http://localhost:5000/api/auth/register`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/auth/register`,
         {
           name,
           email,

@@ -10,7 +10,7 @@ export default function CreateActivity() {
 
   const create = async () => {
     await axios.post(
-      "http://localhost:5000/api/activity/create",
+      `${import.meta.env.VITE_BACKEND_URL}/api/activity/create`,
       {
         activity_type: type,
         subject,

@@ -2,8 +2,22 @@ const Activity = require("../models/Activity")
 
 exports.createActivity = async (req, res) => {
   try {
-    const { activity_type, subject, class: className, name } =
-      req.body
+    const { activity_type, subject, class: className, name } = req.body;
+
+    // 🔎 Check if already exists
+    const existing = await Activity.findOne({
+      teacher_id: req.user.id,
+      activity_type,
+      subject,
+      class: className,
+      name
+    });
+
+    if (existing) {
+      return res.status(400).json({
+        msg: "This activity plan already exists"
+      });
+    }
 
     const activity = await Activity.create({
       teacher_id: req.user.id,
@@ -12,18 +26,21 @@ exports.createActivity = async (req, res) => {
       class: className,
       name,
       created_at: new Date()
-    })
+    });
 
-    res.json(activity)
+    res.json(activity);
+
   } catch (err) {
-    if (err.code === 11000)
-      return res
-        .status(400)
-        .json({ msg: "Duplicate Activity Entry" })
 
-    res.status(500).json(err)
+    if (err.code === 11000) {
+      return res.status(400).json({
+        msg: "Duplicate Activity Entry"
+      });
+    }
+
+    res.status(500).json({ error: err.message });
   }
-}
+};
 
 exports.weeklyTrends = async (req, res) => {
   const data = await Activity.aggregate([
